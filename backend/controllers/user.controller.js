@@ -19,6 +19,6 @@ const deleteUser = (req, res = Response) => {
 module.exports = {
   getUsers,
   storeUser,
-  updateUser
+  updateUser,
   deleteUser,
 };
