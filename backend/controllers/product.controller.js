@@ -21,8 +21,9 @@ const getAll = async (req, res = response) => {
 
 const getById = async (req, res = response) => {
   const id = req.params.id;
+
   try {
-    const product = await ProductModel.findOne({ _id: id });
+    const product = await ProductModel.findById(id);
     res.json(product).status(200);
   } catch (error) {
     console.log(error);
@@ -42,7 +43,7 @@ const store = async (req, res = response) => {
   });
 
   product.save();
-  res.json(product);
+  res.json(product).status(201);
 };
 
 const update = async (req, res = response) => {
