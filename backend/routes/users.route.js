@@ -23,7 +23,7 @@ router.post(
   ],
   storeUser
 );
-router.put("/", updateUser);
+router.put("/:id", updateUser);
 router.delete("/", deleteUser);
 
 module.exports = router;

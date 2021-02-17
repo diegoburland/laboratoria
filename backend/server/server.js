@@ -8,19 +8,17 @@ class Server {
     this.app = express();
     this.port = process.env.PORT;
     this.userPath = "/api/users";
+    this.productPath = "/api/products";
+    this.routes();
     this.connection();
     this.middlewares();
-    this.routes();
   }
 
   routes() {
     this.app.use(this.userPath, require("../routes/users.route"));
+    this.app.use(this.productPath, require("../routes/products.route"));
     this.app.get("/", (req, res) => {
       res.status(200).send("hola mundo");
-    });
-
-    this.app.post("/", (req, res) => {
-      res.send("hola mundo");
     });
   }
 
@@ -35,9 +33,7 @@ class Server {
   }
 
   listen() {
-    this.app.listen(this.port, () =>
-      console.log("Gator app listening on port ", this.port)
-    );
+    this.app.listen(this.port);
   }
 }
 
